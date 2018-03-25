@@ -15,20 +15,48 @@ void init(Stack *sp, int size)
     sp->size = size;
 }
 
+
+int isOverflow(Stack *sp)
+{
+    return sp->top == sp->size-1;
+}
+
+void push_c (Stack *sp, char c)
+{
+    if(isOverflow(sp))
+    {
+        //move elements from old array to bigger array
+        char *temp;
+        temp = (char *) malloc(sizeof(char) * sp->size * 2);
+   
+        int i;
+        for(i=0;i<=sp->top;i++)
+        {
+            temp[i] = sp->str[i];
+        }
+        free(sp->str);
+        sp->str = temp;
+    } 
+    sp->top++;
+    sp->str[sp->top] = c;
+}
+
 void push(Stack *sp, int value)
 {
-    if(sp->top == sp->size -1)
+    if(isOverflow(sp))
     {
         //move elements from old array to bigger array
         int *temp;
         temp = (int *) malloc(sizeof(int) * sp->size * 2);
-        if(temp == NULL)
+      /*
+        if(isOverflow(sp))
         {
             printf("Stack overflow\n");
             return;
         }
+      */
         int i;
-        for(i=0;i<=sp->top;i++)
+        for(i=0; i <= sp->top; i++)
         {
             temp[i] = sp->item[i];
         }
@@ -39,9 +67,15 @@ void push(Stack *sp, int value)
     sp->item[sp->top] = value;
 }
 
+int isUnderflow(Stack *sp)
+{
+    return sp->top == -1;
+}
+
+
 int pop(Stack *sp)
 {
-    if(sp->top == -1)
+    if(isUnderflow(sp))
     {
         printf("Stack underflow\n");
         return -9999; //function must always return integer
@@ -67,3 +101,4 @@ int getSize(Stack *sp)
 {
     return sp->size;
 }
+

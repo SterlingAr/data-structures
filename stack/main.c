@@ -5,12 +5,14 @@
 
 int main()
 {
-    static Stack s1;
-    init(&s1,2);
+    static Stack s1,s2;
+    init(&s1,3);
+    init_c(&s2, 3);
     
-    printf("1. Push \n");
-    printf("2. Pop \n");
-    printf("3. Current size \n");
+    printf("1. Push integer\n");
+    printf("2. Push character\n");
+    printf("3. Pop \n");
+    printf("4. Current size \n");
 
     printf("4. Exit \n");
 
@@ -25,22 +27,25 @@ int main()
         printf("Size of the Stack: %d \n", currentSize);
         switch(choice)
         {
-            case 1: printf("Enter value: ");
+            case 1: printf("Enter integer value: ");
                     scanf("%d", &value);
                     push(&s1, value);
                     break;
-            case 2: 
+            case 2: printf("Enter character: ");
+                    scanf("%s", &value);
+                    push_c(&s2, value);
+            case 3: 
                     value = pop(&s1);
                     if (value != -9999)
                     {
                         printf("Poped data\n");
                     }
                     break;
-            case 3: 
+            case 4: 
                      printf("Size of the Stack: %d \n", getSize(&s1));
                      break;
 
-            case 4:  deallocate(&s1); 
+            case 5:  deallocate(&s1); 
                      exit(0);
             
         }
