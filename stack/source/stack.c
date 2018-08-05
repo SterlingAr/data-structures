@@ -6,10 +6,11 @@
 void init(Stack *sp, int size)
 {
     sp->top = -1;
-    sp->item = (int *) malloc(sizeof(int) * size);
+    sp->item = (int *)malloc(sizeof(int) * size);
+
     if(sp->item == NULL)
     {
-        printf("Unable to allocate memory \n");
+        printf("Unable to allocate memory. \n");
         exit(1);
     }
     sp->size = size;
@@ -21,25 +22,25 @@ int isOverflow(Stack *sp)
     return sp->top == sp->size-1;
 }
 
-void push_c (Stack *sp, char c)
-{
-    if(isOverflow(sp))
-    {
-        //move elements from old array to bigger array
-        char *temp;
-        temp = (char *) malloc(sizeof(char) * sp->size * 2);
+// void push_c(Stack *sp, char c)
+// {
+//     if(isOverflow(sp))
+//     {
+//         //move elements from old array to bigger array
+//         char *temp;
+//         temp = (char *) malloc(sizeof(char) * sp->size * 2);
    
-        int i;
-        for(i=0;i<=sp->top;i++)
-        {
-            temp[i] = sp->str[i];
-        }
-        free(sp->str);
-        sp->str = temp;
-    } 
-    sp->top++;
-    sp->str[sp->top] = c;
-}
+//         int i;
+//         for(i=0;i<=sp->top;i++)
+//         {
+//             temp[i] = sp->str[i];
+//         }
+//         free(sp->str);
+//         sp->str = temp;
+//     } 
+//     sp->top++;
+//     sp->str[sp->top] = c;
+// }
 
 void push(Stack *sp, int value)
 {
@@ -47,14 +48,8 @@ void push(Stack *sp, int value)
     {
         //move elements from old array to bigger array
         int *temp;
-        temp = (int *) malloc(sizeof(int) * sp->size * 2);
-      /*
-        if(isOverflow(sp))
-        {
-            printf("Stack overflow\n");
-            return;
-        }
-      */
+        temp = (int *)malloc(sizeof(int) * sp->size * 2);
+
         int i;
         for(i=0; i <= sp->top; i++)
         {
@@ -62,7 +57,9 @@ void push(Stack *sp, int value)
         }
         free(sp->item);
         sp->item = temp;
-    } 
+        sp->size *= 2;
+    }
+
     sp->top++;
     sp->item[sp->top] = value;
 }
@@ -99,6 +96,7 @@ void deallocate(Stack *sp)
 
 int getSize(Stack *sp)
 {
-    return sp->size;
+
+    return  sp->size;
 }
 

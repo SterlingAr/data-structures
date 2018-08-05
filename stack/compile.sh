@@ -1,4 +1,7 @@
 #first create the object files from the source files
+rm obj/stack.o
+rm stackxutils.a
+rm main
 gcc -c -o obj/stack.o source/stack.c
 #create the library using the object files
 /usr/bin/ar -cvq stackxutils.a obj/stack.o

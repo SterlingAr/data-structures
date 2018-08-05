@@ -17,9 +17,30 @@ for this I need to define a stack of characters
 -for each character in the stack fputc into new file. 
 
 */
+
+int reverseText(char source[], char dest[]){
+    FILE *fps, *fpd;
+    const int SIZE = 50;
+
+    Stack 
+
+    fps = fopen(source, "r"); //read mode
+    if(fps == NULL){
+        printf("Error opening file %s\n ", source);
+        return 0;
+    }
+
+    fpd = fopen(dest, "w");
+    if(fpd == NULL){
+        printf("Error opening file %s\n", dest);
+        return 0;
+    }
+
+    
+}
+
 int main ()
 {
-
 
 
 }
