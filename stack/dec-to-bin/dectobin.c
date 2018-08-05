@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "headers/type.h"
-#include "headers/stack.h"
+#include "../common/stack-integer/headers/type.h"
+#include "../common/stack-integer/headers/stack.h"
 
 void printBinary(unsigned int);
 
