@@ -18,7 +18,6 @@ for this I need to define a stack of characters
 
 int reverseText(char source[], char dest[]){
     FILE *fps, *fpd;
-    int c;
     const int SIZE = 50;
   
     fps = fopen(source, "r"); //read mode
@@ -34,21 +33,26 @@ int reverseText(char source[], char dest[]){
     }
 
     Stack temp;
+    char c;
     init(&temp,SIZE);
 
-    //read character one by one(returned byt fputc) and push them to the stack
+    //read character one by one(returned byt fputc) and push them to the stack untill EOF 
     do {
         c = fgetc (fps);
         push(&temp,  c);
     } while (c != EOF);
-    fclose(fps);
+
 
     for(int i = temp.top; i >= 0; i--){
         fputc(temp.item[i], fpd);
     }
-    
 
-    return 0;
+    //close file pointers and deallocate the memory. 
+    fclose(fps);
+    fclose(fpd);
+    deallocate(&temp);
+
+    return 1;
     
 }
 
@@ -56,6 +60,12 @@ int main ()
 {
 
     int f = reverseText("text.txt", "reversed-text.txt");
+
+    if(f) {
+        printf("File reversed successfully\n");
+    } else {
+        printf("An error ocurred while reversing the text file");
+    }
     return 0;
 
 }
