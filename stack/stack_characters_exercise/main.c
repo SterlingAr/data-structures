@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "headers/type_char.h"
-#include "headers/stack_char.h"
+#include "../common/stack-char/headers/type.h"
+#include "../common/stack-char/headers/stack.h"
 
 int main()
 {

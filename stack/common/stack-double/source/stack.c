@@ -2,18 +2,16 @@
 #include <stdlib.h>
 #include "../headers/type.h"
 
-
 void init(Stack *sp, int size)
 {
     sp->top = -1;
-    sp->item = (char *)malloc(sizeof(char) * size);
+    sp->item = (double *)malloc(sizeof(double) * size);
 
     if(sp->item == NULL)
     {
         printf("Unable to allocate memory. \n");
         exit(1);
     }
-    
     sp->size = size;
 }
 
@@ -23,13 +21,14 @@ int isOverflow(Stack *sp)
     return sp->top == sp->size-1;
 }
 
-void push(Stack *sp, char value)
+
+void push(Stack *sp, double value)
 {
     if(isOverflow(sp))
     {
         //move elements from old array to bigger array
-        char *temp;
-        temp = (char *)malloc(sizeof(char) * sp->size * 2);
+        double *temp;
+        temp = (double *)malloc(sizeof(double) * sp->size * 2);
 
         int i;
         for(i=0; i <= sp->top; i++)
@@ -51,14 +50,14 @@ int isUnderflow(Stack *sp)
 }
 
 
-char pop(Stack *sp)
+double pop(Stack *sp)
 {
     if(isUnderflow(sp))
     {
         printf("Stack underflow\n");
-        exit(1); 
+        return -9999; //function must always return integer
     }
-    char v;
+    double v;
     v = sp->item[sp->top];
     sp->top--;
     return v;
@@ -77,5 +76,7 @@ void deallocate(Stack *sp)
 
 int getSize(Stack *sp)
 {
+
     return  sp->size;
 }
+
