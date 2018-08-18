@@ -17,29 +17,54 @@ read the expression from right to left.
 
 */
 
+//operand1 has priority
+double evaluate(double operand1, double operand2, char operator){
+    switch(operator){
+        case '+': return operand1 + operand2;
+        case '-': return operand1 - operand2;
+        case '*': return operand1 * operand2;
+        case '/': return operand1 / operand2;
+    }
+}
+
 double eval_prefix_notation(char expr[]){
-    Stack s1; 
+    Stack s1;
     init(&s1,30);
     int i = 0;
-    char c = '0';
+    double op1,op2;
+    char c = '0';   
   
-    while(c != '\0'){
+    do {
         c = expr[i];
-        // printf("atof(&c) : %0.2f \n &c: %s \n c: %d \n", atof(&c), &c,c);
-        if(c != '\0'){
-            push(&s1,atof(&c));
-        }
         i++;
+    } while(c!='\0');
+
+    for(i; i >= 0; i--){
+        c = expr[i];
+        if(c != '\0'){
+            switch(c){
+                case '+': push(&s1,evaluate(pop(&s1), pop(&s1),'+'));
+                          break;
+                case '*': push(&s1,evaluate(pop(&s1), pop(&s1),'*'));
+                          break;
+                case '-': push(&s1,evaluate(pop(&s1), pop(&s1),'-'));
+                          break;
+                case '/': push(&s1,evaluate(pop(&s1), pop(&s1),'/'));
+                          break;
+                default: push(&s1,atof(&c));
+            }
+        }
     }
 
-    for(int i = 0; i <= s1.top; i++){
-        printf("%0.2f\n", s1.item[i]);
+    for(int j = 0; j <= s1.top; j++){
+        printf("%0.2f\n", s1.item[j]);
     }
     return 0;
 }
 
-int main() {
 
-    eval_prefix_notation("333");
+int main() {
+    // eval_prefix_notation("+3*32"); //expected result 9
+    eval_prefix_notation("-+5*56*29"); //expected result 17
     return 0;
 }
