@@ -1,0 +1,4 @@
+/home/marius/ides/clion-2018.2.5/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/gcc -G "CodeBlocks - Unix Makefiles" /home/marius/projects/data-structures/stack
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/marius/projects/data-structures/stack/cmake-build-debug

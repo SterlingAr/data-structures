@@ -1,0 +1,4 @@
+/home/marius/projects/data-structures/stack/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/marius/projects/data-structures/stack/cmake-build-debug/CMakeFiles/mains.dir
+/home/marius/projects/data-structures/stack/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/marius/projects/data-structures/stack/cmake-build-debug/CMakeFiles/stack_double.dir

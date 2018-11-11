@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/marius/projects/data-structures/stack/common/stack-double/headers/stack.h
+
+/home/marius/projects/data-structures/stack/common/stack-double/headers/type.h
+
+/home/marius/projects/data-structures/stack/postfix-prefix-notation/main.c
+stdio.h
+-
+stdlib.h
+-
+../common/stack-double/headers/type.h
+/home/marius/projects/data-structures/stack/common/stack-double/headers/type.h
+../common/stack-double/headers/stack.h
+/home/marius/projects/data-structures/stack/common/stack-double/headers/stack.h
+

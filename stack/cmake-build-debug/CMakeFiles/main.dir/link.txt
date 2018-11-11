@@ -1,0 +1,1 @@
+/usr/bin/gcc -g   CMakeFiles/main.dir/postfix-prefix-notation/main.c.o  -o main 

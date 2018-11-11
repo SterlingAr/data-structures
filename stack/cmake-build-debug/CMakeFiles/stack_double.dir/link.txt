@@ -1,0 +1,2 @@
+/usr/bin/ar qc libstack_double.a  CMakeFiles/stack_double.dir/common/stack-double/source/stack.c.o
+/usr/bin/ranlib libstack_double.a

@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/marius/projects/data-structures/stack/common/stack-double/headers/type.h
+
+/home/marius/projects/data-structures/stack/common/stack-double/source/stack.c
+stdio.h
+-
+stdlib.h
+-
+../headers/type.h
+/home/marius/projects/data-structures/stack/common/stack-double/headers/type.h
+

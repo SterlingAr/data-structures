@@ -1,0 +1,1 @@
+/usr/bin/gcc -g   CMakeFiles/mains.dir/postfix-prefix-notation/main.c.o  -o mains libstack_double.a 
