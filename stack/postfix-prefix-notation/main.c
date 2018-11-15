@@ -22,10 +22,11 @@ read the expression from right to left.
 double evaluate(double operand1, double operand2, char operator){
 
     switch(operator){
-        case '+': return operand2 + operand1;
-        case '-': return operand2 - operand1;
-        case '*': return operand2 * operand1;
-        case '/': return operand2 / operand1;
+        case '+': return operand1 + operand2;
+        case '-': return operand1 - operand2;
+        case '*': return operand1 * operand2;
+        case '/': return operand1 / operand2;
+        default: exit(1);
     }
 }
 
@@ -37,7 +38,7 @@ double eval_prefix_notation(const char * expr)
     init(&s1,30);
 
     int i = 0;
-//    const char * pattern  = "(^[0-9])";
+    double  op1,op2,result;
     char  c,
           cs[2];
     cs[1] = '\0';
@@ -62,32 +63,32 @@ double eval_prefix_notation(const char * expr)
         i++;
     }
 
+    i--;//skip null terminator
     while(i >= 0)
     {
 
         c = expr[i];
-
-        if(c == '\0')
-        {
-            i--;
-            continue;
-        }
-
-        //if c is operand, push
-        //if c is operator,perform operation and push result to stack
         cs[0] = c;
+
         if(!regexec(&operandReg, cs, 0, NULL, 0))
         {
             push(&s1,strtod(&c,NULL));
         }
         else if(!regexec(&operatorReg, cs, 0, NULL, 0))
         {
-            push(&s1,evaluate(pop(&s1), pop(&s1), c));
+            op1 = pop(&s1);
+            op2 = pop(&s1);
+            result = evaluate(op1,op2, c);
+            push(&s1, result);
+        }
+        else
+        {
+            printf("Bad prefix notation given");
         }
 
         i--;
     }
-    
+
     for(int j = 0; j <= s1.top; j++){
         printf("%0.2f\n", s1.item[j]);
     }
@@ -95,9 +96,10 @@ double eval_prefix_notation(const char * expr)
 }
 
 
-int main() {
-     eval_prefix_notation("+3*32"); //expected result 9
-//     eval_prefix_notation("+5/*233"); //expected result 9
+int main()
+{
+//     eval_prefix_notation("-+7*45+2"); //expected result 9
+     eval_prefix_notation("+5/*233"); //expected result 9
 //    eval_prefix_notation("-+5*56*29"); //expected result 17
     return 0;
 }
